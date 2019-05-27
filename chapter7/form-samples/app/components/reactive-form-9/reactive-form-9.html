@@ -1,0 +1,18 @@
+<h2>Reactive Form 9 - FormModel, FormGroup and FormArray</h2>
+
+<form [formGroup]="emailFormModel" (ngSubmit)="onSubmit()">
+	<label>Emails</label>
+	<button type="button" (click)="addEmail()">Add Email</button>
+	<ul formArrayName="emails">
+		<li *ngFor="let e of emailFormModel.get('emails').controls; let i=index">
+			<input [formControlName]="i">
+			<button (click)="removeEmail(i)">Remove</button>
+		</li>
+	</ul>
+	<button type="submit">Submit</button>
+</form>
+
+<hr>
+<label>Form Value:</label>
+<pre>{{ value }}</pre>
+

@@ -1,0 +1,47 @@
+<h1>{{ description }}</h1>
+
+<h2 style="background: red;">Open the console to see the debug messages</h2>
+
+<div style="float: right; width: 600px; height: 300px;">
+    <fieldset style="border: 1px solid green;">
+        <legend>Primary outlet (Outter outlet)</legend>
+        <router-outlet></router-outlet>
+    </fieldset>
+
+    <fieldset style="border: 1px solid orange;">
+        <legend>Aux outlet</legend>
+        <router-outlet name="aux"></router-outlet>
+    </fieldset>
+</div>
+
+
+<h4>
+    <a [routerLink]="['/']">Home</a>
+</h4>
+<h4>
+    <a [routerLink]="['/product']">Product Details</a>
+</h4>
+<h4>
+    <input type="button" value="Programmatically navigate to Product Details" (click)="navigateToProductDetail()" />
+</h4>
+<h4>
+    <a [routerLink]="['/order']">Order Details</a>
+</h4>
+<h4>
+    <a [routerLink]="['/delivery', 98383]">Delivery detail</a>
+</h4>
+<h4>
+    <a [routerLink]="[{outlets: {aux: 'chat'}}]">Chat Component: Aux Outlet</a>
+</h4>
+<h4>
+    <a [routerLink]="[{outlets: {aux: null}}]">Close Chat Component: Aux Outlet</a>
+</h4>
+<h4>
+    <a [routerLink]="['/luxury']">Luxury Component from Luxury Module</a>
+</h4>
+<h4>
+    <a [routerLink]="['/lazyload']">Lazy Load Component from Lazy Load Module</a>
+</h4>
+
+<br>
+<br>

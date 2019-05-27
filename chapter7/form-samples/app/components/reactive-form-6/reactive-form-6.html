@@ -1,0 +1,13 @@
+<h2>Reactive Form 6 - Async validations</h2>
+
+<form [formGroup]="userForm">
+	SSN: <input type="text" formControlName="my-ssn">
+	<span>{{userForm.status}}</span>
+	<span [hidden]="!userForm.hasError('ssnError', 'my-ssn')"  style="color: red">
+        There is an error
+    </span>
+</form>
+
+<hr>
+<label>Form Value:</label>
+<pre>{{ value }}</pre>

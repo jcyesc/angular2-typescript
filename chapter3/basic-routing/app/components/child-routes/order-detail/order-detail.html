@@ -1,0 +1,14 @@
+<fieldset style="border: 1px solid blue;">
+    <legend>Child outlet: Order details</legend>
+
+    <h3>{{ order.id }} : {{ order.description }} : {{ order?.propertyx?.notexist }}</h3>
+
+    <h4>
+        <a [routerLink]="['./amount']">Amount details (Check LoginGuard.ts)</a>
+    </h4>
+    <h4>
+        <a [routerLink]="['./supplier', '123abc']">Supplier details</a>
+    </h4>
+
+    <router-outlet></router-outlet>
+</fieldset>

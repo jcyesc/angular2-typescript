@@ -1,0 +1,8 @@
+<h2>Template Driven 2 - Directives for validation</h2>
+
+<form #f="ngForm">
+	SSN: <input type="text" name="my-ssn" ngModel ssnValidator> 
+	<span [hidden]="!f.form.hasError('ssnError', 'my-ssn')" style="color: red">
+	   SSN is invalid
+	</span>
+</form>

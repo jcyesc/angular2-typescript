@@ -1,0 +1,11 @@
+<h2>Reactive Form 5 - Custom error messages</h2>
+
+<form [formGroup]="userForm">
+	SSN: <input type="text" formControlName="my-ssn">
+	<span [hidden]="!userForm.hasError('ssnError', 'my-ssn')"  style="color: red">
+		{{userForm.getError('ssnError', 'my-ssn')?.description}}
+	</span>
+</form>
+<hr>
+<label>Form Value:</label>
+<pre>{{ value }}</pre>

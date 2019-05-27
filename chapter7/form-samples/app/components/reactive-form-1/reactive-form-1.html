@@ -1,0 +1,17 @@
+<h2>Reactive Form 1 - Adds emails dynamically</h2>
+
+<form [formGroup]="formModel" (ngSubmit)="onSubmit()">
+	<label>Emails</label>
+	<button type="button" (click)="addEmail()">Add Email</button>
+	
+	<ul formArrayName="emails">
+		<li *ngFor="let e of formModel.get('emails').controls; let i=index">
+			<input [formControlName]="i">
+		</li>
+	</ul>
+	
+	<button type="submit">Submit</button>
+</form>
+<hr>
+<label>Form Value:</label>
+<pre>{{ value }}</pre>

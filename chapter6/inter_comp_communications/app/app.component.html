@@ -1,0 +1,61 @@
+<div style="border: 1px solid blue">
+	<h3>Binding Examples</h3>
+
+	<!-- First component : The change event happens when the focus is lost in the input. -->
+	<input type="text" placeholder="Enter stock (e.g. IBM)"
+		(change)="onInputEvent($event)"> <br>
+	<order-processor [stockSymbol]="stock" quantity="100"></order-processor>
+	<br /> <br /> <br />
+
+	<!-- Second component -->
+	<price-quoter (lastPrice)="priceQuoteHandler($event)"></price-quoter>
+	<br>AppComponent received: {{stockSymbol}} {{price |
+	currency:'USD':true:'1.2-2'}} <br /> <br />
+
+	<!-- Third component : The event bubbles to the parent component. -->
+	<div (bubble-last-price)="bubblePriceQuoteHander($event)">
+		<event-bubbling-price-quoter></event-bubbling-price-quoter>
+	</div>
+	AppComponent received: {{bubbleStockSymbol}} {{bubblePrice |
+	currency:'USD':true:'1.2-2'}} <br /> <br />
+
+	<!-- Fourth component : Mediator pattern -->
+	<mediator></mediator>
+	<br /> <br />
+
+	<!-- Fifth component : Projection (NgContent) -->
+	<div class="wrapper">
+		<h2>Parent</h2>
+		<div>This div is defined in the Parent's template</div>
+		<child-simple-ng-content>
+		<div>Parent projects this div onto the child</div>
+		</child-simple-ng-content>
+	</div>
+	<br /> <br />
+
+	<!-- Six component : Projection (Multiple NgContent) -->
+	<div class="app">
+		<h2>Parent</h2>
+		<div>This div is defined in the Parent's template</div>
+		<child-multiple-ng-contents>
+		<div class="header">Child got this header from parent
+			{{todaysDate}}</div>
+		<div class="footer">Child got this footer from parent</div>
+		</child-multiple-ng-contents>
+	</div>
+	<br /> <br />
+
+	<!-- Seven component : ngOnInit() and ngOnChanges() -->
+	<parent-basic-lifecycle></parent-basic-lifecycle>
+	<br /> <br />
+
+	<!-- Eight component : ngOnChanges() -->
+	<parent-ngonchanges-lifecycle></parent-ngonchanges-lifecycle>
+	<br /> <br />
+
+	<!-- Ninth component : how to access the child api -->
+	<parent-api></parent-api>
+	<br /> <br />
+</div>
+
+

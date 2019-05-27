@@ -1,0 +1,41 @@
+<h2>Template Driven 3 - Directives and field's status and validity</h2>
+<h3>Touched and untouched fields</h3>
+<h3>Pristine and dirty fields</h3>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value, f.valid)" novalidate>
+	<div>
+		Username: <input type="text" name="username" ngModel #user="ngModel"
+			required> <span
+			[hidden]="!(f.form.hasError('required', 'username') && user.touched)"
+			style="color: red">Username is required</span>
+		<ul>
+			<li>( Touched {{ user.touched }} )</li>
+			<li>( Pristine {{ user.pristine }} )</li>
+			<li>( Dirty {{ user.dirty }} )</li>
+		</ul>
+	</div>
+	<div>
+		SSN: <input type="text" name="ssn" ngModel #ssnModel="ngModel" ssnValidator> <span
+			[hidden]="!(f.form.hasError('ssnError', 'ssn') && ssnModel.touched)" style="color: red">SSN
+			in invalid</span>
+	</div>
+	<div ngModelGroup="passwordsGroup" equalValidator>
+		<div>
+			Password: <input type="password" name="password" ngModel
+				minlength="5"> <span
+				[hidden]="!f.form.hasError('minlength', ['passwordsGroup', 'password'])"
+				style="color: red">Password is too short</span>
+		</div>
+		<div>
+			Confirm password: <input type="password" name="pconfirm" ngModel>
+			<span [hidden]="!f.form.hasError('equalError', 'passwordsGroup')"
+				style="color: red">Passwords must be the same</span>
+		</div>
+	</div>
+	<button type="submit">Submit</button>
+</form>
+
+<hr>
+<label>Form Value:</label>
+<pre>{{ value }}</pre>
+

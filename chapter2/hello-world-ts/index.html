@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Angular 2 Application</title>
+    <script src="//unpkg.com/core-js/client/shim.min.js"></script>
+    <!-- zone.js is a library that powers the change-detection mechanism. -->
+    <script src="//unpkg.com/zone.js@0.6.25"></script>
+    <!-- The TypeScript compiler transpiles your source code into JavaScript right
+        in the browser. -->
+    <script src="//unpkg.com/typescript@2.0.0"></script>
+    <!-- The SystemJS library dynamically loads the application code into the browser. -->
+    <script src="//unpkg.com/systemjs@0.19.37/dist/system.src.js"></script>
+    <script>
+        System.config({
+            transpiler: 'typescript',
+            typescriptOptions: {
+                emitDecoratorMetadata: true
+            },
+            /* Maps the names of the Angular modules to their CDN locations. */
+            map: {
+                'rxjs': 'https://unpkg.com/rxjs@5.0.0-beta.12',
+                '@angular/core': 'https://unpkg.com/@angular/core@2.0.0',
+                '@angular/common': 'https://unpkg.com/@angular/common@2.0.0',
+                '@angular/compiler': 'https://unpkg.com/@angular/compiler@2.0.0',
+                '@angular/platform-browser': 'https://unpkg.com/@angular/platform-browser@2.0.0',
+                '@angular/platform-browser-dynamic': 'https://unpkg.com/@angular/platform-browser-dynamic@2.0.0'
+            },
+            // Specifies the main script for each Angular Module.
+            packages: {
+                '@angular/core': {
+                    main: 'index.js'
+                },
+                '@angular/common': {
+                    main: 'index.js'
+                },
+                '@angular/compiler': {
+                    main: 'index.js'
+                },
+                '@angular/platform-browser': {
+                    main: 'index.js'
+                },
+                '@angular/platform-browser-dynamic': {
+                    main: 'index.js'
+                }
+            }
+        });
+        /* Instructs SystemJS to load the main module from the main.ts file. */
+        System.import('main.ts');
+    </script>
+</head>
+
+<body>
+    <!-- The custom HTML element represents the component that's implemented in main.ts -->
+    <hello-world></hello-world>
+</body>
+
+</html>

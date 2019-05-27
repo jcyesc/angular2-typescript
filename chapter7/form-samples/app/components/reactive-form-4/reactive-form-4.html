@@ -1,0 +1,9 @@
+<h2>Reactive Form 4 - Form validation</h2>
+
+<form [formGroup]="ssnform">
+	SSN: <input type="text" formControlName="my-ssn">
+	<span [hidden]="!ssnform.hasError('ssnError', 'my-ssn')" style="color: red">SSN in invalid</span>
+</form>
+<hr>
+<label>Form Value:</label>
+<pre>{{ value }}</pre>

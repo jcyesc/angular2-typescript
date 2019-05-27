@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+    <h1>WebSocket - Hello world</h1>
+
+	<div id="messageGoesHere"></div>
+
+	<script type="text/javascript">
+		const ws = new WebSocket("ws://localhost:8085");
+		ws.onmessage = (event) => {
+			const myDiv = document.getElementById("messageGoesHere");
+			myDiv.innerHTML += '<h3>';  
+			myDiv.innerHTML += event.data;
+			myDiv.innerHTML += '</h3>';  
+		};
+		ws.onerror = (event) => {
+			console.log("Error ", event)
+		}
+	</script>
+</body>
+</html>

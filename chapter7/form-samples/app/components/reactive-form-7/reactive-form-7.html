@@ -1,0 +1,32 @@
+<h2>Reactive Form 7 - FormModel and FormGroup validations</h2>
+
+<form [formGroup]="userFormModel" (ngSubmit)="onSubmit()" novalidate>
+	<div>
+		Username: <input type="text" formControlName="username"> <span
+			[hidden]="!userFormModel.hasError('required', 'username')"
+			style="color: red">Username is required</span>
+	</div>
+	<div>
+		SSN: <input type="text" formControlName="ssn"> <span
+			[hidden]="!userFormModel.hasError('ssn', 'ssn')" style="color: red">SSN
+			is invalid</span>
+	</div>
+	<div formGroupName="passwordsGroup">
+		<div>
+			Password: <input type="password" formControlName="password">
+			<span
+				[hidden]="!userFormModel.hasError('minlength', ['passwordsGroup', 'password'])"
+				style="color: red">Password is too short</span>
+		</div>
+		<div>
+			Confirm password: <input type="password" formControlName="pconfirm">
+			<span [hidden]="!userFormModel.hasError('equal', 'passwordsGroup')"
+				style="color: red">Passwords must be the same</span>
+		</div>
+	</div>
+	<button type="submit">Submit</button>
+</form>
+
+<hr>
+<label>Form Value:</label>
+<pre>{{ value }}</pre>
